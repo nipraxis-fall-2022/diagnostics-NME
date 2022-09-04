@@ -29,6 +29,12 @@ Change directory back to root of repository
 cd ..
 ```
 
+## Installation
+```
+1. Install python dependencies with pip 
+
+```
+
 ## Check the data
 
 ```
