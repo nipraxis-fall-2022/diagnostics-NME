@@ -25,9 +25,16 @@ def file_hash(filename):
     # Open the file, read contents as bytes.
     # Calculate, return SHA1 has on the bytes from the file.
     # This is a placeholder, replace it to write your solution.
+    fpath = Path(filename)
+    con=fpath.read_bytes()
+    hash_v=hashlib.sha1(con).hexdigest()
+    # Your code here.
+    
+
+
     raise NotImplementedError(
         'This is just a template -- you are expected to code this.')
-
+    return hash_v
 
 def validate_data(data_directory):
     """ Read ``data_hashes.txt`` file in `data_directory`, check hashes
@@ -53,7 +60,45 @@ def validate_data(data_directory):
     # If hash for filename is not the same as the one in the file, raise
     # ValueError
     # This is a placeholder, replace it to write your solution.
-    raise NotImplementedError('This is just a template -- you are expected to code this.')
+    data_pth= Path()/data_directory
+    #print(data_pth)
+    hash_pth=list(data_pth.glob("**/*.txt"))
+    hash_pth=str(hash_pth[0])
+    #hash_pth= "data_pth/**/hash_list.txt"
+    #print(hash_pth[0])
+
+
+    #hash_pth = Path(data_directory)
+    #hash_pth =  data_pth/group-0/'data_hashes.txt'
+    #data_dir = hash_pth.parent
+    with open(hash_pth) as f:
+        lines= f.readlines()
+        #print(lines)
+        f.close()
+    # Split into lines.
+    #lines.strip()
+
+    # For each line:
+    for line in lines:
+        # Split each line into expected_hash and filename
+        spl= line.split()
+        # Calculate actual hash for given filename.
+        d_pth= list(data_pth.glob("**/*"))
+        print(d_pth)
+        cal_hash=file_hash(data_pth/spl[1])
+        # Check actual hash against expected hash
+        act_hash=spl[0]
+        # Return False if any of the hashes do not match.
+        if (cal_hash!=act_hash):
+            return False
+
+        raise NotImplementedError('This is just a template -- you are expected to code this.')
+    return True
+
+
+
+
+   
 
 
 def main():
