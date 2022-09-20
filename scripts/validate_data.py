@@ -31,9 +31,9 @@ def file_hash(filename):
     hash_v = hashlib.sha1(con).hexdigest()
     # Your code here.
 
-    raise NotImplementedError(
-        "This is just a template -- you are expected to code this."
-    )
+    # raise NotImplementedError(
+    #     "This is just a template -- you are expected to code this."
+    # )
     return hash_v
 
 
@@ -84,7 +84,7 @@ def validate_data(data_directory):
         spl = line.split()
         # Calculate actual hash for given filename.
         d_pth = list(data_pth.glob("**/*"))
-        print(d_pth)
+        #print(d_pth)
         cal_hash = file_hash(data_pth / spl[1])
         # Check actual hash against expected hash
         act_hash = spl[0]
@@ -92,9 +92,9 @@ def validate_data(data_directory):
         if cal_hash != act_hash:
             return False
 
-        raise NotImplementedError(
-            "This is just a template -- you are expected to code this."
-        )
+        # raise NotImplementedError(
+        #     "This is just a template -- you are expected to code this."
+        # )
     return True
 
 
