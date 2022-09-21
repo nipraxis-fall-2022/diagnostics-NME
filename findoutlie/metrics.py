@@ -38,11 +38,11 @@ def dvars(img):
 
     vol_diff= voxel_by_time[...,1:]-voxel_by_time[...,:-1] # 2D array
     #print(vol_diff.shape())
-    print(vol_diff)
+    #print(vol_diff)
     #vol_diff_1D=vol_diff.flatten()
     dvar_val = np.sqrt(np.mean(vol_diff ** 2, axis=0))
     #print(dvar_val.shape())
-    print(dvar_val)
+    #print(dvar_val)
     return dvar_val
 
 
