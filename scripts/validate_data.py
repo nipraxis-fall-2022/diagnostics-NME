@@ -84,7 +84,11 @@ def validate_data(data_directory):
         spl = line.split()
         # Calculate actual hash for given filename.
         d_pth = list(data_pth.glob("**/*"))
+ outlier-detection
         # print(d_pth)
+
+        #print(d_pth)
+ main
         cal_hash = file_hash(data_pth / spl[1])
         # Check actual hash against expected hash
         act_hash = spl[0]
