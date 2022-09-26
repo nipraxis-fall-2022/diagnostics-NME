@@ -30,21 +30,19 @@ def dvars(img):
     # You may be be able to solve this in four lines, without a loop.
     # But solve it any way you can.
     # This is a placeholder, replace it to write your solution.
-    data=img.get_fdata()
-    vol_shape=data.shape[:-1]
-    n_voxels=np.prod(vol_shape)
+    data = img.get_fdata()
+    vol_shape = data.shape[:-1]
+    n_voxels = np.prod(vol_shape)
 
     voxel_by_time = np.reshape(data, (n_voxels, data.shape[-1]))
 
-    vol_diff= voxel_by_time[...,1:]-voxel_by_time[...,:-1] # 2D array
-    #print(vol_diff.shape())
-    print(vol_diff)
-    #vol_diff_1D=vol_diff.flatten()
+    vol_diff = voxel_by_time[..., 1:] - voxel_by_time[..., :-1]  # 2D array
+    # print(vol_diff.shape())
+    # print(vol_diff)
+    # vol_diff_1D=vol_diff.flatten()
     dvar_val = np.sqrt(np.mean(vol_diff ** 2, axis=0))
-    #print(dvar_val.shape())
-    print(dvar_val)
+    # print(dvar_val.shape())
+    # print(dvar_val)
     return dvar_val
 
-
-
-    raise NotImplementedError('Code up this function')
+    raise NotImplementedError("Code up this function")

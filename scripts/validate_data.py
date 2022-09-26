@@ -2,15 +2,16 @@
 
 Run as:
 
-    python3 scripts/validate_data.py
+    python3 scripts/validata_data.py data
 """
 
 from pathlib import Path
+import sys
 import hashlib
 
 
 def file_hash(filename):
-    """ Get byte contents of file `filename`, return SHA1 hash
+    """Get byte contents of file `filename`, return SHA1 hash
 
     Parameters
     ----------
@@ -25,12 +26,19 @@ def file_hash(filename):
     # Open the file, read contents as bytes.
     # Calculate, return SHA1 has on the bytes from the file.
     # This is a placeholder, replace it to write your solution.
-    raise NotImplementedError(
-        'This is just a template -- you are expected to code this.')
+    fpath = Path(filename)
+    con = fpath.read_bytes()
+    hash_v = hashlib.sha1(con).hexdigest()
+    # Your code here.
+
+    # raise NotImplementedError(
+    #     "This is just a template -- you are expected to code this."
+    # )
+    return hash_v
 
 
 def validate_data(data_directory):
-    """ Read ``data_hashes.txt`` file in `data_directory`, check hashes
+    """Read ``data_hashes.txt`` file in `data_directory`, check hashes
 
     Parameters
     ----------
@@ -53,24 +61,54 @@ def validate_data(data_directory):
     # If hash for filename is not the same as the one in the file, raise
     # ValueError
     # This is a placeholder, replace it to write your solution.
-    raise NotImplementedError(
-        'This is just a template -- fill out the template with code.')
+    data_pth = Path() / data_directory
+    # print(data_pth)
+    hash_pth = list(data_pth.glob("**/*.txt"))
+    hash_pth = str(hash_pth[0])
+    # hash_pth= "data_pth/**/hash_list.txt"
+    # print(hash_pth[0])
+
+    # hash_pth = Path(data_directory)
+    # hash_pth =  data_pth/group-0/'data_hashes.txt'
+    # data_dir = hash_pth.parent
+    with open(hash_pth) as f:
+        lines = f.readlines()
+        # print(lines)
+        f.close()
+    # Split into lines.
+    # lines.strip()
+
+    # For each line:
+    for line in lines:
+        # Split each line into expected_hash and filename
+        spl = line.split()
+        # Calculate actual hash for given filename.
+        d_pth = list(data_pth.glob("**/*"))
+        # print(d_pth)
+        cal_hash = file_hash(data_pth / spl[1])
+        # Check actual hash against expected hash
+        act_hash = spl[0]
+        # Return False if any of the hashes do not match.
+        if cal_hash != act_hash:
+            return False
+
+        # raise NotImplementedError(
+        #     "This is just a template -- you are expected to code this."
+        # )
+    return True
 
 
 def main():
     # This function (main) called when this file run as a script.
-    group_directory = (Path(__file__).parent.parent / 'data')
-    groups = list(group_directory.glob('group-??'))
-    if len(groups) == 0:
-        raise RuntimeError('No group directory in data directory: '
-                           'have you downloaded and unpacked the data?')
-
-    if len(groups) > 1:
-        raise RuntimeError('Too many group directories in data directory')
+    #
+    # Get the data directory from the command line arguments
+    if len(sys.argv) < 2:
+        raise RuntimeError("Please give data directory on " "command line")
+    data_directory = sys.argv[1]
     # Call function to validate data in data directory
-    validate_data(groups[0])
+    validate_data(data_directory)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Python is running this file as a script, not importing it.
     main()

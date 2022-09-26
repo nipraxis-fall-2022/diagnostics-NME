@@ -46,7 +46,7 @@ def find_outliers(data_directory):
         Dictionary with keys being filenames and values being lists of outliers
         for filename.
     """
-    image_fnames = Path(data_directory).glob('**/sub-*.nii.gz')
+    image_fnames = Path(data_directory).glob("**/sub-*.nii.gz")
     outlier_dict = {}
     for fname in image_fnames:
         outliers = detect_outliers(fname)
