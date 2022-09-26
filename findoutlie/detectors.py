@@ -12,6 +12,7 @@ requirements are met and raise an error otherwise.
 
 # Any imports you need
 # +++your code here+++
+import numpy as np
 
 
 def iqr_detector(measures, iqr_proportion=1.5):
@@ -51,3 +52,22 @@ def iqr_detector(measures, iqr_proportion=1.5):
     # * You'll likely need np.logical_or
     # https://textbook.nipraxis.org/numpy_logical.html
     # +++your code here+++
+
+    Q1 = np.percentile(measures, 25, interpolation="midpoint")
+    Q2 = np.percentile(measures, 50, interpolation="midpoint")
+    Q3 = np.percentile(measures, 75, interpolation="midpoint")
+    IQR = Q3 - Q1
+
+    outlier = []
+
+    for i in range(len(measures)):
+        if (measures[i] > (Q3 + IQR * iqr_proportion)) | (
+            measures[i] < (Q1 - IQR * iqr_proportion)
+        ):
+    
+            outlier.append(True)
+        else:
+            outlier.append(False)
+
+    #print(outlier)
+    return np.array(outlier)

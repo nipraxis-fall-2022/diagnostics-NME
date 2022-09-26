@@ -13,6 +13,7 @@ requirements are met and raise an error otherwise.
 # Any imports you need
 # LAB(begin solution)
 import numpy as np
+
 # LAB(replace solution)
 # +++your code here+++
 # LAB(end solution)

@@ -4,6 +4,7 @@
 # Any imports you need
 # LAB(begin solution)
 import numpy as np
+
 # LAB(replace solution)
 # +++your code here+++
 # LAB(end solution)
@@ -39,5 +40,5 @@ def dvars(img):
     return np.sqrt(np.mean(time_diffs ** 2, axis=0))
     # LAB(replace solution)
     # This is a placeholder, replace it to write your solution.
-    raise NotImplementedError('Code up this function')
+    raise NotImplementedError("Code up this function")
     # LAB(end solution)

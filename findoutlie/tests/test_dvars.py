@@ -14,7 +14,7 @@ import nipraxis as npx
 from findoutlie.metrics import dvars
 
 
-TEST_FNAME = npx.fetch_file('ds114_sub009_t2r1.nii')
+TEST_FNAME = npx.fetch_file("ds114_sub009_t2r1.nii")
 
 
 def test_dvars():
