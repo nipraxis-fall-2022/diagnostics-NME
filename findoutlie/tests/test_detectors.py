@@ -19,15 +19,15 @@ MY_DIR = Path(__file__).parent
 # Hint: sys.path
 # Hint: see the solutions if you are stuck.
 # +++your code here+++
+findoutlie_dir = MY_DIR.parent
+print("The directory containing detectors is {}".format(str(findoutlie_dir)))
+sys.path.append(str(findoutlie_dir))
 
-#import sys
-#export PYTHONPATH=$PYTHONPATH:C:/Users/nauma/Documents/nipraxis-work/diagnostics-NME/findoutlie
-#sys.path.append('C:/Users/nauma/Documents/nipraxis-work/diagnostics-NME/findoutlie')
 import numpy as np
 
 # This import needs the directory containing the findoutlie directory
 # on the Python path.
-from findoutlie.detectors import iqr_detector
+from detectors import iqr_detector
 
 
 def test_iqr_detector():
