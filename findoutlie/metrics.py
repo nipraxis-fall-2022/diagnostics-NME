@@ -31,10 +31,8 @@ def dvars(img):
     # But solve it any way you can.
     # This is a placeholder, replace it to write your solution.
     data = img.get_fdata()
-    vol_shape = data.shape[:-1]
-    n_voxels = np.prod(vol_shape)
-
-    voxel_by_time = np.reshape(data, (n_voxels, data.shape[-1]))
+   
+    voxel_by_time = np.reshape(data, (-1, data.shape[-1]))
 
     vol_diff = voxel_by_time[..., 1:] - voxel_by_time[..., :-1]  # 2D array
     # print(vol_diff.shape())
