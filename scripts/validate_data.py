@@ -61,16 +61,13 @@ def validate_data(data_directory):
     # If hash for filename is not the same as the one in the file, raise
     # ValueError
     # This is a placeholder, replace it to write your solution.
-    data_pth = Path() / data_directory
+    data_pth = Path(data_directory)
     # print(data_pth)
     hash_pth = list(data_pth.glob("**/*.txt"))
     hash_pth = str(hash_pth[0])
     # hash_pth= "data_pth/**/hash_list.txt"
     # print(hash_pth[0])
 
-    # hash_pth = Path(data_directory)
-    # hash_pth =  data_pth/group-0/'data_hashes.txt'
-    # data_dir = hash_pth.parent
     with open(hash_pth) as f:
         lines = f.readlines()
         # print(lines)
@@ -89,28 +86,26 @@ def validate_data(data_directory):
 
         #print(d_pth)
 
-        cal_hash = file_hash(data_pth / spl[1])
+        cal_hash = file_hash(data_pth.parent / spl[1])
         # Check actual hash against expected hash
         act_hash = spl[0]
         # Return False if any of the hashes do not match.
         if cal_hash != act_hash:
-            return False
-
-        # raise NotImplementedError(
-        #     "This is just a template -- you are expected to code this."
-        # )
-    return True
-
+            raise ValueError(f'{spl[1]} changed, hashes do not match')
+    print(f'{data_directory} is not corrupted, all the hashes match')
+    return
 
 def main():
     # This function (main) called when this file run as a script.
-    #
-    # Get the data directory from the command line arguments
-    if len(sys.argv) < 2:
-        raise RuntimeError("Please give data directory on " "command line")
-    data_directory = sys.argv[1]
+    group_directory = (Path(__file__).parent.parent / 'data')
+    groups = list(group_directory.glob('group-??'))
+    if len(groups) == 0:
+        raise RuntimeError('No group directory in data directory: '
+                           'have you downloaded and unpacked the data?')
+    if len(groups) > 1:
+        raise RuntimeError('Too many group directories in data directory')
     # Call function to validate data in data directory
-    validate_data(data_directory)
+    validate_data(groups[0])
 
 
 if __name__ == "__main__":
