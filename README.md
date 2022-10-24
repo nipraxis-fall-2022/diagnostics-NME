@@ -25,7 +25,7 @@ cd diagnostics-NME
 Make sure to install everything listed in 'requirements.txt' using 'pip':
 ```
 pip3 install --user scipy matplotlib pandas scikit-image sympy nibabel jupyter ipython jupytext nipraxis okpy
-
+```
 ## Get the data
 
 ```
