@@ -114,9 +114,24 @@ identified as an outlier.  0 refers to the first volume.  For example (these
 outlier IDs are completely random, for illustration):
 
 ```
-data/group-01/sub-01/func/sub-01_task-taskzero_run-01_bold.nii.gz, 3, 21, 22, 104
-data/group-01/sub-01/func/sub-01_task-taskzero_run-02_bold.nii.gz, 11, 33, 91
-data/group-01/sub-03/func/sub-03_task-taskzero_run-02_bold.nii.gz, 101, 102, 132
-data/group-01/sub-08/func/sub-08_task-taskzero_run-01_bold.nii.gz, 0, 1, 2, 166, 167
-data/group-01/sub-08/func/sub-08_task-taskzero_run-01_bold.nii.gz, 3
+data/group-01/sub-08/func/sub-08_task-taskzero_run-01_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 18, 19, 29, 133, 134, 135, 154, 155, 157
+data/group-01/sub-08/func/sub-08_task-taskzero_run-02_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 9, 14, 17, 53, 63, 79, 151
+data/group-01/sub-01/func/sub-01_task-taskzero_run-01_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 80, 145, 157, 158
+data/group-01/sub-01/func/sub-01_task-taskzero_run-02_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 19, 145, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160
+data/group-01/sub-06/func/sub-06_task-taskzero_run-02_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 81, 135, 153, 154, 161
+data/group-01/sub-06/func/sub-06_task-taskzero_run-01_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 19, 24, 25, 26, 27, 28, 29, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159
+data/group-01/sub-07/func/sub-07_task-taskzero_run-02_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 52, 80, 108, 141, 143
+data/group-01/sub-07/func/sub-07_task-taskzero_run-01_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 80, 81, 135, 136, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161
+data/group-01/sub-09/func/sub-09_task-taskzero_run-01_bold.nii.gz, 0, 3, 4, 134, 135, 136, 143, 144, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160
+data/group-01/sub-09/func/sub-09_task-taskzero_run-02_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 35, 36, 50, 51, 79, 80, 150, 151, 152, 153, 154, 155, 156, 157
+data/group-01/sub-10/func/sub-10_task-taskzero_run-02_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 104
+data/group-01/sub-10/func/sub-10_task-taskzero_run-01_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 150, 152, 157, 159, 160
+data/group-01/sub-05/func/sub-05_task-taskzero_run-01_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 24, 25, 26, 27, 48, 49, 52, 76, 77, 106, 149, 150, 151, 160
+data/group-01/sub-05/func/sub-05_task-taskzero_run-02_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 50, 51, 52, 53, 54, 142, 157, 158, 159, 160, 161
+data/group-01/sub-02/func/sub-02_task-taskzero_run-02_bold.nii.gz, 34, 65, 66, 105, 106, 107, 108, 135, 140, 141, 148, 152
+data/group-01/sub-02/func/sub-02_task-taskzero_run-01_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 53, 111, 133, 159
+data/group-01/sub-03/func/sub-03_task-taskzero_run-02_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 101, 102, 103, 160, 161
+data/group-01/sub-03/func/sub-03_task-taskzero_run-01_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 14, 137, 138, 140, 156, 157, 158, 159
+data/group-01/sub-04/func/sub-04_task-taskzero_run-01_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 59, 145, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161
+data/group-01/sub-04/func/sub-04_task-taskzero_run-02_bold.nii.gz, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 32, 33, 34, 35, 36, 49, 50, 52, 53, 54, 57, 58, 148, 149, 157
 ```
