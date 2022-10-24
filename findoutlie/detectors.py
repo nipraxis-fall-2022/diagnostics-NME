@@ -16,7 +16,7 @@ import numpy as np
 
 from scipy.stats import norm
 
-def mad_voxel_detector(img,p=0.01):
+def mad_voxel_detector(img,threshold=3.5):
     """ Detect outliers in 'img' using mediaan absolute deviation.
     Returns 2D vector of same shape as 'img', where True means the corresponding
     value in 'img' is an outlier.
@@ -28,8 +28,8 @@ def mad_voxel_detector(img,p=0.01):
     img : 2D array 
         Values for which we will detect outliers
     p : float, optional
-        Nominal probability threshold - Scalar to multiply the median absolute deviation 
-        to form the upper and lower threshold. Default is 0.01.
+        Scalar to multiply the median absolute deviation 
+        to form the upper and lower threshold. Default is 3.5.
 
     Returns
     -------
@@ -41,13 +41,8 @@ def mad_voxel_detector(img,p=0.01):
     med = np.expand_dims(np.nanmedian(img,axis=-1),axis=1)
     # Calculate mean absolute deviation per voxel
     mad = np.expand_dims(np.nanmedian(np.abs(img-med),axis=-1),axis=1)
-    p = p
-    # N is no of time points
-    N = img.shape[-1]
-    # calculate the threshold
-    a = norm.ppf(p/N)*np.sqrt(np.pi/2)
     # calculate the outliers
-    outlier_tf = np.abs(img-med)>np.abs(a*mad)
+    outlier_tf = np.abs(img-med)>(threshold*mad)
     return outlier_tf
 
 def mad_time_detector(measures, threshold=3.5):
