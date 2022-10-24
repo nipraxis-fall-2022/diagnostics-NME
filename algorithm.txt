@@ -1,0 +1,10 @@
+Algorithm:
+
+1. The 4D image is first segmented (using otsu threshold) to segment the brain voxels from the background. (x)
+2. The median(med_voxel(x)) and median absolute deviation(mad_voxel(x)) is calculated for each of the brain voxels.
+3. The brain voxels lying outside the interval [med_voxel(x)-a*mad_voxel(x), med_voxel(x)+a*mad_voxel(x)] are considered as outliers. a = 3.5
+4. For each time t, the number of outlying voxels n(t) is counted.
+5. The median (n_med) and MAD (n_mad) of n(t) are calculated. Any time t with n(t)>n_med+3.5*n_mad are considered as outliers.
+
+References:
+1. Cox, R.W. Outlier Detection in FMRl Time Series. ISMRM(2002).
