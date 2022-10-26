@@ -1,10 +1,28 @@
 Algorithm:
 
 1. The 4D image is first segmented (using otsu threshold) to segment the brain voxels from the background. (x)
+
+I. Median absolute deviation over voxels and median absolute deviation over time points
 2. The median(med_voxel(x)) and median absolute deviation(mad_voxel(x)) is calculated for each of the brain voxels.
 3. The brain voxels lying outside the interval [med_voxel(x)-a*mad_voxel(x), med_voxel(x)+a*mad_voxel(x)] are considered as outliers. a = 3.5
 4. For each time t, the number of outlying voxels n(t) is counted.
 5. The median (n_med) and MAD (n_mad) of n(t) are calculated. Any time t with n(t)>n_med+3.5*n_mad are considered as outliers.
+
+II. DVARS and median absolute deviation over time points
+6. The dvars(t) of the brain voxels are calculated.
+7. The median (dvars_med) and MAD (dvars_mad) of dvars(t) are calculated. Any time t with |dvars(t)-dvars_med|>3.5*dvars_mad are considered as outliers.
+
+III. Sliding window and median absolute deviation over time points
+8. A fraction of the time points are chosen using a sliding window, mean over voxel intensities for each time point (m(t)) in this sliding window is calculated. 
+9. The median (m_med) and MAD (m_mad) of m(t) in this sliding window are calculated. Any time t with |m(t)-m_med|>3.5*m_mad are considered as outliers. 
+10. This is repeated till the sliding window covers all the time points.
+11. All the outliers in each sliding window are merged.
+
+12. The outliers from the I approach is a more global approach and filters a lot of time-points as outliers. 
+13. The outliers from the II(DVARS) approach compares successive volumes and if the difference is large considers the preceding volumes as outliers.
+14. The outliers from the III(sliding window) approach compares volumes within a certain range and then detect outliers. This is mostly done to take care of drift.
+
+15. Outliers from I and II are merged (o_total) (Global + Local). If these o_total agree with the outliers from sliding window, they are classified as final outliers (o_final).
 
 References:
 1. Cox, R.W. Outlier Detection in FMRl Time Series. ISMRM(2002).
