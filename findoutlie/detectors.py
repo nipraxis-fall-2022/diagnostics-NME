@@ -45,7 +45,7 @@ def mad_voxel_detector(img,threshold=3.5):
     outlier_tf = np.abs(img-med)>(threshold*mad)
     return outlier_tf
 
-def mad_time_detector(measures, threshold=3.5):
+def mad_time_detector(measures, lower_bound, threshold=3.5):
     """ Detect outliers in 'measures' using median absolute deviation.
     Returns 1D vector of same length as 'measures', where True means the corresponsding 
     value in 'measures' is an outlier.
@@ -71,7 +71,10 @@ def mad_time_detector(measures, threshold=3.5):
     # Calculate median absoulte deviation of measures
     mad = np.median(np.abs(measures-med))
     # Calculate the outliers
-    outlier_tf = measures>med+threshold*mad
+    if lower_bound:
+        outlier_tf = np.abs(measures-med)>threshold*mad
+    else:
+        outlier_tf = measures>med+threshold*mad
     return outlier_tf
 
 def iqr_detector(measures, iqr_proportion=1.5):
